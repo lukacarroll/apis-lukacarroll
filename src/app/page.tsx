@@ -1,13 +1,14 @@
 import Link from "next/link";
 
-import { CreatePost } from "~/app/_components/create-post";
+import { CreatePost } from "~/app/components/create-post";
 import { getServerAuthSession } from "~/server/auth";
 import { api } from "~/trpc/server";
+import { GreeterWrapper } from "./components/greeter";
+import { User } from "./components/user";
 import styles from "./index.module.css";
 
 export default async function Home() {
   const hello = await api.post.hello({ text: "from tRPC" });
-  const session = await getServerAuthSession();
 
   return (
     <main className={styles.main}>
@@ -44,17 +45,7 @@ export default async function Home() {
             {hello ? hello.greeting : "Loading tRPC query..."}
           </p>
 
-          <div className={styles.authContainer}>
-            <p className={styles.showcaseText}>
-              {session && <span>Logged in as {session.user?.name}</span>}
-            </p>
-            <Link
-              href={session ? "/api/auth/signout" : "/api/auth/signin"}
-              className={styles.loginButton}
-            >
-              {session ? "Sign out" : "Sign in"}
-            </Link>
-          </div>
+          <User />
         </div>
 
         <CrudShowcase />
@@ -78,6 +69,8 @@ async function CrudShowcase() {
       ) : (
         <p className={styles.showcaseText}>You have no posts yet.</p>
       )}
+
+      <GreeterWrapper />
 
       <CreatePost />
     </div>
