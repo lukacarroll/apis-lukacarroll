@@ -1,0 +1,82 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px 4px 4px;
+  border-radius: 16px;
+  transition: background-color 0.5s;
+}
+
+.container:hover {
+  background-color: var(--lightest);
+}
+
+.actions {
+  display: none;
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.container:hover .actions {
+  display: block;
+  opacity: 1;
+}
+
+.deleteButton {
+  border-radius: 16px;
+  background-color: var(--dark);
+  padding: 4px 8px;
+  border: 2px solid var(--darkest);
+  color: white;
+}
+
+.title {
+  flex: 1;
+}
+
+/* CHECKBOX */
+
+.checkbox .round {
+  position: relative;
+}
+
+.checkbox .round label {
+  transition: all 0.5s;
+
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 28px;
+  width: 28px;
+  display: block;
+}
+
+.checkbox .round label:after {
+  border: 2px solid #fff;
+  border-top: none;
+  border-right: none;
+  content: "";
+  height: 6px;
+  left: 8px;
+  opacity: 0;
+  position: absolute;
+  top: 9px;
+  transform: rotate(-45deg);
+  width: 12px;
+}
+
+.checkbox .round input[type="checkbox"] {
+  visibility: hidden;
+  display: none;
+  opacity: 0;
+}
+
+.checkbox .round input[type="checkbox"]:checked + label {
+  background-color: var(--dark);
+  border-color: var(--darkest);
+}
+
+.checkbox .round input[type="checkbox"]:checked + label:after {
+  opacity: 1;
+}

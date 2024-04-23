@@ -12,8 +12,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3rem;
+  gap: 1rem;
   padding: 4rem 1rem;
+}
+
+.header {
+  text-align: center;
 }
 
 @media (min-width: 640px) {
@@ -22,23 +26,23 @@
   }
 }
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   .container {
     max-width: 768px;
   }
-}
+} */
 
-@media (min-width: 1024px) {
+/* @media (min-width: 1024px) {
   .container {
     max-width: 1024px;
   }
-}
+} */
 
-@media (min-width: 1280px) {
+/* @media (min-width: 1280px) {
   .container {
     max-width: 1280px;
   }
-}
+} */
 
 @media (min-width: 1536px) {
   .container {
@@ -52,7 +56,13 @@
   font-weight: 800;
   letter-spacing: -0.025em;
   margin: 0;
-  color: blueviolet;
+  color: var(--darkest);
+  text-shadow: rgba(255, 255, 255, 0.9) 2px 1px;
+}
+
+.subHeader {
+  margin: 0px;
+  font-weight: 300;
 }
 
 @media (min-width: 640px) {
@@ -80,33 +90,5 @@
 }
 
 .loginButton:hover {
-  background-color: rgb(255 255 255 / 0.2);
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.input {
-  width: 100%;
-  border-radius: 9999px;
-  padding: 0.5rem 1rem;
-  color: black;
-}
-
-.submitButton {
-  all: unset;
-  border-radius: 9999px;
-  background-color: rgb(255 255 255 / 0.1);
-  padding: 0.75rem 2.5rem;
-  font-weight: 600;
-  color: white;
-  text-align: center;
-  transition: background-color 150ms cubic-bezier(0.5, 0, 0.2, 1);
-}
-
-.submitButton:hover {
   background-color: rgb(255 255 255 / 0.2);
 }

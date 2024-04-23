@@ -1,10 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import { Suspense } from "react";
 import { describe, it } from "vitest";
-import Page from "./page";
 
-describe("Page Test", function () {
-  it("Show the welcome header", async function () {
+describe("Task List", function () {
+  it("Renders the number of active tasks", async function () {
     render(
       <Suspense>
         <Page />
