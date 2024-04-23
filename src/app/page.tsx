@@ -19,7 +19,7 @@ const tasks: Task[] = [
   {
     id: "3",
     title: "Task 3",
-    state: "PINNED"
+    state: "ACTIVE"
   }
 ];
 
@@ -32,7 +32,7 @@ export default async function Home() {
             Get Things Done
           </h1>
           <h2 className={styles.subHeader}>
-            The easiest way to control you time!
+            The easiest way to control your time!
           </h2>
         </header>
         <TaskList tasks={tasks} />
