@@ -6,8 +6,6 @@ import { createTRPCReact } from "@trpc/react-query";
 import { useState } from "react";
 import SuperJSON from "superjson";
 
-import { hydrate } from "@tanstack/react-query";
-
 import { type AppRouter } from "~/server/api/root";
 
 const createQueryClient = () => new QueryClient();
@@ -26,11 +24,11 @@ export const api = createTRPCReact<AppRouter>();
 
 export function TRPCReactProvider(props: {
   children: React.ReactNode;
-  cache: Any;
+  // cache: Any;
 }) {
   const queryClient = getQueryClient();
 
-  hydrate(queryClient, props.cache.json);
+  // hydrate(queryClient, props.cache.json);
 
   const [trpcClient] = useState(() =>
     api.createClient({

@@ -1,21 +1,19 @@
-"use client";
-
-import { useState } from "react";
+import { CreateTask } from "~/components/create-task";
 import { TaskItem } from "./task-item";
 import styles from "./task-list.module.css";
 
 export type Task = {
-  id: string;
-  title: string;
-  state: "COMPLETED" | "ACTIVE";
+  userId: string;
+  id: number;
+  description: string;
+  completed: boolean;
 };
 
 export async function TaskList() {
-  const [text, setText] = useState("");
-
-  // todo, get tasks
+  // TODO: Fetch tasks from server
   const tasks: Task[] = [];
-  const activeTasks = tasks.filter((task) => task.state === "ACTIVE");
+
+  const activeTasks = tasks.filter((task) => !task.completed);
 
   return (
     <>
@@ -32,22 +30,7 @@ export async function TaskList() {
         </section>
       </div>
       <section className={styles.inputContainer}>
-        <input
-          type="text"
-          value={text}
-          placeholder="What needs to be done?"
-          className={styles.taskInput}
-          onChange={(e) => setText(e.target.value)}
-        />
-        <button
-          className={styles.taskButton}
-          onClick={() => {
-            // TODO: Implement the add task mutation
-            setText("");
-          }}
-        >
-          Add Task
-        </button>
+        <CreateTask />
       </section>
     </>
   );

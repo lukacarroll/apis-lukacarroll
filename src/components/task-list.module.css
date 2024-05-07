@@ -26,24 +26,3 @@
   gap: 8px;
   width: 80%;
 }
-
-.taskInput {
-  padding: 8px 16px;
-  flex: 1;
-  border: none;
-  border-radius: 16px;
-}
-
-.taskButton {
-  padding: 8px;
-  border-radius: 16px;
-  background-color: var(--darkest);
-  color: white;
-  font-weight: 600;
-  border: solid 1px var(--dark);
-  padding: 8px 16px;
-}
-
-.taskButton:hover {
-  background-color: var(--dark);
-}

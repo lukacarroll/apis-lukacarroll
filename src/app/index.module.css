@@ -16,6 +16,12 @@
   padding: 4rem 1rem;
 }
 
+.login {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .header {
   text-align: center;
 }

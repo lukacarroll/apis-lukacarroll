@@ -26,13 +26,21 @@ export type ExtractKeys<T, K extends keyof T = keyof T> = T[K] extends
 
 export type Query<T, K extends keyof T> = T[K] extends QueryProcedure<Any>
   ? {
-      query(input: inferProcedureInput<T[K]>): inferProcedureOutput<T[K]>; // : SetQueryHandler<T, K>;
+      query(
+        handler: (
+          input: inferProcedureInput<T[K]> | Promise<inferProcedureInput<T[K]>>
+        ) => inferProcedureOutput<T[K]> | Promise<inferProcedureOutput<T[K]>>
+      ): Any;
     }
   : never;
 
 export type Mutation<T, K extends keyof T> = T[K] extends MutationProcedure<Any>
   ? {
-      mutation(input: inferProcedureInput<T[K]>): inferProcedureOutput<T[K]>;
+      mutation(
+        handler: (
+          input: inferProcedureInput<T[K]>
+        ) => inferProcedureOutput<T[K]> | Promise<inferProcedureOutput<T[K]>>
+      ): Any;
     }
   : never;
 
@@ -50,4 +58,25 @@ type ExtractProcedureHandler<
 export type MswTrpc<T> = {
   [key in keyof T as ExtractKeys<T, key>]: ExtractProcedureHandler<T, key>;
 };
-export const trpcMsw: MswTrpc<AppRouter> = createTRPCMsw<AppRouter>() as Any;
+
+import superjson from "superjson";
+export const trpcMsw: MswTrpc<AppRouter> = createTRPCMsw<AppRouter>({
+  transformer: {
+    input: {
+      serialize(input) {
+        return superjson.serialize(input);
+      },
+      deserialize(input) {
+        return superjson.deserialize(input[0]);
+      }
+    },
+    output: {
+      serialize(input) {
+        return superjson.serialize(input);
+      },
+      deserialize(input) {
+        return superjson.deserialize(input[0]);
+      }
+    }
+  }
+}) as Any;

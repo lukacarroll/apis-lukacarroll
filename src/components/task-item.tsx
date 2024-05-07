@@ -1,3 +1,5 @@
+"use client";
+
 import type { Task } from "./task-list";
 
 import styles from "./task-item.module.css";
@@ -13,7 +15,7 @@ export function TaskItem({ task }: { task: Task }) {
           <input
             type="checkbox"
             id={`task-${task.id}`}
-            checked={task.state === "COMPLETED"}
+            checked={task.completed}
             data-testid={`task-${task.id}`}
             onClick={() => {
               // TODO: Implement the toggle task completion mutation
@@ -24,13 +26,9 @@ export function TaskItem({ task }: { task: Task }) {
       </div>
       <span
         className={styles.title}
-        style={
-          task.state == "COMPLETED"
-            ? { textDecoration: "line-through" }
-            : undefined
-        }
+        style={task.completed ? { textDecoration: "line-through" } : undefined}
       >
-        {task.title}
+        {task.description}
       </span>
       <div className={styles.actions}>
         <button
