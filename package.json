@@ -23,6 +23,7 @@
     "@trpc/next": "next",
     "@trpc/react-query": "next",
     "@trpc/server": "next",
+    "express": "^4.19.2",
     "next": "^14.2.1",
     "next-auth": "^4.24.6",
     "react": "19.0.0-canary-657428a9e-20240416",
